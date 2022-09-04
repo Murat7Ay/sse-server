@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const https = require('https');
 const app = express();
+const { randomUUID } = require('crypto');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -62,6 +63,7 @@ function eventsHandler(request, response, next) {
 app.post('/fact', addFact);
 async function addFact(request, respsonse, next) {
     const newFact = request.body;
+    newFact.uuid = randomUUID();
     console.log(newFact)
     respsonse.json(newFact)
     return sendEventsToAll(newFact);
