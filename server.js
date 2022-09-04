@@ -25,7 +25,7 @@ app.listen(PORT, () => {
 
 app.get('/events', eventsHandler);
 function eventsHandler(request, response, next) {
-    if (clients.length > 5) {
+    if (clients.length > 15) {
         response.writeHead(418, "Maximum client exceed");
         return;
     }
@@ -82,7 +82,7 @@ function sendEventsToAll(newFact) {
     });
 }
 
-
+//tFUnsH533z2HE7@2e1lGsy6bS
 
 function translateRequest(message, tl) {
     return new Promise((resolve, reject) => {
